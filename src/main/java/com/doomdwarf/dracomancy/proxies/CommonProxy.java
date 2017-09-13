@@ -3,8 +3,8 @@ package com.doomdwarf.dracomancy.proxies;
 import java.io.File;
 
 import com.doomdwarf.dracomancy.Config;
-import com.doomdwarf.dracomancy.blocks.BlockDracomancyBasic;
-import com.doomdwarf.dracomancy.items.ItemDracomancyBasic;
+import com.doomdwarf.dracomancy.Reference;
+import com.doomdwarf.dracomancy.init.ModArmory;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -15,6 +15,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber
 public class CommonProxy
@@ -23,8 +24,7 @@ public class CommonProxy
 	
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		File directory = event.getModConfigurationDirectory();
-        config = new Configuration(new File(directory.getPath(), "dracomancy.cfg"));
+        config = new Configuration(new File(Reference.CONFIG_DIR, "dracomancy.cfg"));
         Config.readConfig();
     }
 
@@ -44,12 +44,14 @@ public class CommonProxy
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event)
     {
-    	event.getRegistry().register(new BlockDracomancyBasic());
+    	
     }
 
-    @SubscribeEvent
+	@SubscribeEvent
     public static void registerItems(RegistryEvent.Register<Item> event)
     {
-    	event.getRegistry().register(new ItemDracomancyBasic());
+		//ModArmory.registerItems();
+        IForgeRegistry<Item> registry = event.getRegistry();
+        ModArmory.ITEMS.forEach(registry::register);
     }
 }

@@ -1,13 +1,14 @@
 package com.doomdwarf.dracomancy.items;
 
-import net.minecraft.creativetab.CreativeTabs;
+import com.doomdwarf.dracomancy.Dracomancy;
+
 import net.minecraft.item.Item;
 
 public class ItemDracomancyBasic extends Item
 {
-	public ItemDracomancyBasic()
+	public ItemDracomancyBasic(String name)
 	{
 		super();
-		this.setCreativeTab(CreativeTabs.MATERIALS);
+		this.setCreativeTab(Dracomancy.DRACO_TAB);
 	}
 }

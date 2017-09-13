@@ -1,0 +1,24 @@
+{
+    "modListVersion": 2,
+    "modList":
+    [
+        {
+          "modid": "dracomancy",
+          "name": "Dracomancy",
+          "description": "A mod about Dragons and Their Power",
+          "version": "${version}",
+          "mcversion": "${mcversion}",
+          "url": "",
+          "updateUrl": "",
+          "authorList": ["DoomDwarf_347"],
+          "credits": "Massive Credit goes to bright_spark for JSON reading code, as well as MCJty for some really great modding tutorials.",
+          "logoFile": "assets/logo.png",
+          "screenshots": [],
+          "parent": "",
+          "dependants": [],
+          "dependencies": [],
+          "requiredMods": [],
+          "useDependencyInformation": true
+        }
+    ]
+}
