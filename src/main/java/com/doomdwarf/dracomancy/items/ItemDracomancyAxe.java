@@ -13,7 +13,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 
-public class ItemDracomancyAxe extends ItemTool implements IColourable
+public class ItemDracomancyAxe extends ItemTool
 {
 		// This is a list of blocks harvest-able by it
 		private static Set<Block> blocks = null;
@@ -24,9 +24,6 @@ public class ItemDracomancyAxe extends ItemTool implements IColourable
 		* @param ToolMaterial material
 		*/
 		public final ToolMaterial toolMaterial;
-		protected int textureColour = -1;
-		private String dependantOreDic;
-		private ItemStack dependantStack;
 	    protected String localName;
 	    
 	    public ItemDracomancyAxe(DracomancyCustomTool tool)
@@ -37,25 +34,6 @@ public class ItemDracomancyAxe extends ItemTool implements IColourable
 	        setUnlocalizedName(this.getRegistryName().toString());
 	        setCreativeTab(Dracomancy.DRACO_TAB);
 	    	localName = tool.localName;
-	        textureColour = tool.toolColour;
-	        dependantOreDic = tool.dependantOreDic;
-	        dependantStack = tool.dependantStack;
-	    }
-
-		@Override
-		public int getTextureColour()
-		{
-			return textureColour;
-		}
-		
-		public String getDependantOreDic()
-	    {
-	        return dependantOreDic;
-	    }
-
-	    public ItemStack getDependantStack()
-	    {
-	        return dependantStack;
 	    }
 
 		/**

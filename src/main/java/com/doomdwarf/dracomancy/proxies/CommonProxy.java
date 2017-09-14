@@ -3,7 +3,6 @@ package com.doomdwarf.dracomancy.proxies;
 import java.io.File;
 
 import com.doomdwarf.dracomancy.Config;
-import com.doomdwarf.dracomancy.Reference;
 import com.doomdwarf.dracomancy.init.ModArmory;
 
 import net.minecraft.block.Block;
@@ -15,7 +14,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber
 public class CommonProxy
@@ -24,7 +22,8 @@ public class CommonProxy
 	
 	public void preInit(FMLPreInitializationEvent event)
 	{
-        config = new Configuration(new File(Reference.CONFIG_DIR, "dracomancy.cfg"));
+		File directory = event.getModConfigurationDirectory();
+        config = new Configuration(new File(directory.getPath(), "dracomancy.cfg"));
         Config.readConfig();
     }
 
@@ -51,7 +50,5 @@ public class CommonProxy
     public static void registerItems(RegistryEvent.Register<Item> event)
     {
 		//ModArmory.registerItems();
-        IForgeRegistry<Item> registry = event.getRegistry();
-        ModArmory.ITEMS.forEach(registry::register);
     }
 }
